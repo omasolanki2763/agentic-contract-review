@@ -1,0 +1,801 @@
+[
+  {
+    "title": "StaarSurgicalCompany_20180801_10-Q_EX-10.37_11289449_EX-10.37_Distributor Agreement",
+    "richness": 8,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement, which is in English, shall be governed by and construed in accordance with the laws of the State of California without regard to the conflicts of laws principles thereof.",
+            "start": 45546
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "In the event that Distributor terminates this Agreement, then for one year thereafter, Distributor shall not sell, promote, advertise or market in the Territory products which are competitive with the Products.",
+            "start": 11390
+          },
+          {
+            "text": "Distributor shall (a) procure the Products solely from STAAR (or its affiliates) and not (b) procure, manufacture, market or sell in the Territory any implantable medical devices that compete directly or indirectly with the Products, during the term of this Agreement.",
+            "start": 1963
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Notwithstanding the provisions of Section 3 above, either party shall have the right to terminate this Agreement, without cause, upon no less than ninety (90) days' prior written notice to the other party.",
+            "start": 32697
+          }
+        ]
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Without limiting the above, and to the maximum extent permitted by applicable law, Distributor's sole remedy in contract or in tort (including in negligence) and STAAR's liability shall be limited to the repair or replacement of any Product which is returned to and found to be defective or non-conforming by STAAR.",
+            "start": 17338
+          },
+          {
+            "text": ". Without limiting the generality of the foregoing, upon any termination of this Agreement by either Party in accordance with its terms (or otherwise), in no event shall STAAR be required to pay to Distributor any \"good will\" or other payment of any nature or kind based on the sales, business development or other activities of Distributor during the term of this Agreement.",
+            "start": 34598
+          },
+          {
+            "text": "EXCEPT FOR EACH PARTY'S CONFIDENTIALITY OBLIGATIONS SET FORTH IN SECTION 12 AND INDEMNIFICATION OBLIGATIONS SET FORTH IN THIS SECTION 13, WITHOUT LIMITING ANY RIGHT DISTRIBUTOR MAY HAVE UNDER LOCAL STATUTES THAT CANNOT BE EXCLUDED, RESTRICTED OR MODIFIED, NEITHER PARTY SHALL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR SPECIAL DAMAGES, OR FOR DAMAGES DUE TO LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OR DATA, OR INTERRUPTION OF BUSINESS, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
+            "start": 30981
+          },
+          {
+            "text": "To the maximum extent permitted by applicable law, the exclusive remedy for breach of the Warranty shall be, at STAAR's option, the repair or replacement, at STAAR's expense, of the non-conforming Product; provided that Distributor notifies STAAR of the non-conformity and returns the non-conforming Product within the Warranty Period.",
+            "start": 16057
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "EXCEPT FOR EACH PARTY'S CONFIDENTIALITY OBLIGATIONS SET FORTH IN SECTION 12 AND INDEMNIFICATION OBLIGATIONS SET FORTH IN THIS SECTION 13, WITHOUT LIMITING ANY RIGHT DISTRIBUTOR MAY HAVE UNDER LOCAL STATUTES THAT CANNOT BE EXCLUDED, RESTRICTED OR MODIFIED, NEITHER PARTY SHALL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR SPECIAL DAMAGES, OR FOR DAMAGES DUE TO LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OR DATA, OR INTERRUPTION OF BUSINESS, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
+            "start": 30981
+          }
+        ]
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Neither party may, directly or indirectly (including in connection with a change of control transaction), transfer or assign this Agreement or any of the rights or obligations hereunder without the prior written consent of the other; provided that STAAR may assign any of its rights and delegate any of its obligations hereunder to its subsidiaries and affiliated companies or in connection with a sale or transfer of all or substantially all of its business to which this Agreement relates, whether by merger, sale of assets or otherwise, without Distributor's prior written consent.",
+            "start": 41566
+          },
+          {
+            "text": "Distributor shall not have the right to appoint any subdistributors, subcontractors or other third parties to market, distribute or sell the Products.",
+            "start": 1507
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Subject to Section 8.3, Distributor's right to market, distribute and sell the Products in the Territory shall be exclusive.",
+            "start": 2373
+          },
+          {
+            "text": "Distributor shall (a) procure the Products solely from STAAR (or its affiliates)",
+            "start": 1963
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "During the term of this Agreement, and subject to the terms and conditions hereof, STAAR hereby grants to Distributor, and Distributor hereby accepts, the limited, nontransferable, nonexclusive right and license to use the trade name, trademarks, and logos of STAAR (collectively, \"Trademarks\"), without the right to grant sublicenses, solely in connection with the marketing, distribution and sale of the Products in the Territory pursuant to this Agreement.",
+            "start": 3072
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "NANOPHASETECHNOLOGIESCORP_11_01_2005-EX-99.1-DISTRIBUTOR AGREEMENT",
+    "richness": 7,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement shall be governed by and interpreted under and in accordance with the laws of the State of Delaware without regard to principles of conflicts of laws.",
+            "start": 32252
+          },
+          {
+            "text": "This agreement shall be governed by and subject to the internal laws (exclusive of the conflicts of law provisions) and decisions of the courts of the State of Illinois",
+            "start": 47839
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": false,
+        "spans": []
+      },
+      "Termination For Convenience": {
+        "present": true,
+        "spans": [
+          {
+            "text": "13.1.3 By either party for any reason by providing six (6) months prior written notice expressly terminating this Agreement.",
+            "start": 24771
+          },
+          {
+            "text": "The initial term of this Agreement shall be for a period of five (5) years from the date first set forth above and shall thereafter automatically renew for additional two (2) year terms unless a party provides the other party with notice of non-renewal no less than 6 months prior to the expiration of the initial term or any renewal term unless earlier terminated as follows:",
+            "start": 23663
+          }
+        ]
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "THE CORRECTION OF SUCH DEFECT BY REPAIR OR CREDITING ALFA AESAR'S ACCOUNT FOR THE COST OF THE PRODUCT IN THE MANNER SET FORTH ABOVE SHALL CONSTITUTE THE SOLE AND EXCLUSIVE REMEDY OF DISTRIBUTOR WITH RESPECT TO ANY WARRANTY GIVEN HEREIN RELATING TO ANY PRODUCT SOLD OR DELIVERED HEREUNDER.",
+            "start": 18753
+          },
+          {
+            "text": "SELLER EXPRESSLY DISCLAIMS ANY AND ALL LIABILITY TO BUYER FOR ANY CONSEQUENTIAL DAMAGES, DAMAGES FOR LOSS OF USE, LOSS OF PROFITS, INCOME, OR REVENUE, LOSS OF TIME OR INCONVENIENCE, LOSS OR DAMAGE TO ASSOCIATED EQUIPMENT, COST OF SUBSTITUTED OR REPLACEMENT EQUIPMENT, LOSS TO FACILITIES, LOSS OF CAPITAL, LOSS OF SERVICES OR ANY OTHER INCIDENTAL, CONSEQUENTIAL OR SPECIAL DAMAGE ARISING OUT OF THIS ORDER OR THE OPERATION, FUNCTION OR CHARACTERISTICS OF THE PRODUCTS PURCHASED HEREUNDER OR OTHERWISE PROVIDED BY SELLER. IN THE EVENT THAT PRODUCTS DO NOT SATISFY SPECIFICATIONS, THEY WILL BE REPLACED, AT SELLER'S OPTION, WITH PRODUCTS THAT DO SATISFY THE SPECIFICATIONS AT SELLER'S SOLE EXPENSE. SAID REPLACEMENT IS THE SOLE AND EXCLUSIVE REMEDY OF BUYER.",
+            "start": 40657
+          },
+          {
+            "text": "Seller shall not be liable for indirect, special, incidental or consequential damages arising under this Agreement or otherwise with respect to the sale of the products, including any lost revenues or profits, consequential and/or incidental damages, business interruption or damage to business reputation, regardless of the theory upon which any claim may be based, including any statutory causes of action or claims. In no event will Seller's entire liability to Buyer, including any liability in the event the exclusive remedy set forth in this Agreement fails of its essential purpose, exceed the purchase price actually paid by Buyer for the products hereunder, or any defective portion thereof, whichever is the lesser amount.",
+            "start": 41631
+          },
+          {
+            "text": "To the fullest extent permitted by law, the parties waive and relinquish any claims, demands, causes of action or recoveries for punitive damages, exemplary damages, or statutory damages.",
+            "start": 41443
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Buyer, for itself and its insurers, expressly waives any and all limitations or liability caps, if any, on Buyer's contribution liability to Seller, and any and all statutory or common law lien rights or Claims against Seller arising from any applicable workers compensation or disability acts, which Buyer might or could assert against Seller or Seller's insurers in the event of the personal injury or death of Buyer's employees, representatives or servants.",
+            "start": 46795
+          }
+        ]
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The rights and obligations of the parties under this Agreement shall not be assignable unless consent to the assignment is in writing and signed by the parties.",
+            "start": 39733
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "ALFA AESAR agrees not to manufacture, buy, sell, distribute, deal in or be the agent for any products with the specifications of any of the Products, excluding any preexisting ALFA AESAR products.",
+            "start": 22343
+          },
+          {
+            "text": "ALFA AESAR agrees that, so long as NTC provides ALFA AESAR with Products for ALFA AESAR' S marketing, sale and distribution of Research Quantities of the Products within the Territory, ALFA AESAR shall purchase all its requirements of the Products (including nanomaterials with physical or chemical properties substantially the same as the Products) exclusively from NTC during the term of this Agreement, ALFA AESAR shall:   i) buy the Products in quantities listed in Schedule A and repackage into the research sample quantities as it deems reasonable and appropriate for distribution and sale on a worldwide basis at such resale prices it shall determine from time to time, provided that any such repackaging shall comply with applicable safety laws and regulations;   ii) attempt to keep reasonably sufficient stocks of the Products to meet customer orders and to store such stocks in such conditions as NTC may recommend from time to time to prevent deterioration or damage.",
+            "start": 3497
+          },
+          {
+            "text": "NTC hereby grants to ALFA AESAR, and its subsidiaries and affiliates, the exclusive right to market, sell and distribute Research Quantities of the Products within the Territory, ALFA AESAR hereby accepts such right and agrees to use its reasonable efforts to promote the marketing, sale and distribution of Research Quantities of the Products throughout the Territory in accordance with the terms and conditions of this Agreement using normal and standard practices.",
+            "start": 2929
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Subject to any limitations which NTC communicates to ALFA AESAR in writing, NTC hereby grants ALFA AESAR a license to use, exhibit, excerpt, reformat, modify, reproduce, publish, publicly perform and transmit via the Internet and otherwise use such NTC content for the purpose of marketing, advertising and promoting the Products, provided that ALFA AESAR obtains NTC's prior written approval for NTC content to be included in such literature.",
+            "start": 16426
+          },
+          {
+            "text": "ALFA AESAR hereby grants to NTC a limited non-exclusive license to use the ALFA AESAR Trademarks in the form provided by ALFA AESAR during the Term of this Agreement in accordance with the terms set forth herein.",
+            "start": 13350
+          },
+          {
+            "text": "NTC hereby grants ALFA AESAR a limited non-exclusive license to use, exhibit, excerpt, reproduce, publish, publicly perform and transmit via the Internet and otherwise use the NTC Trademarks in substantially the form as NTC may provide to ALFA AESAR from time to time during the Term of this Agreement in accordance with the terms set forth herein.",
+            "start": 14211
+          },
+          {
+            "text": "Such license is granted solely in connection with NTC's rights and obligations under this Agreement and, in particular, for the purpose of licensing NTC to use the ALFA AESAR Trademark on the NTC web site as expressly contemplated herein for referral of customers of Research Quantities to ALFA AESAR and is a link/navigational button to the ALFA AESAR Site.",
+            "start": 13563
+          },
+          {
+            "text": "Such license is granted solely in connection with ALFA AESAR's rights and obligations under this Agreement and, in particular, for the purpose of licensing ALFA AESAR to use the NTC Trademarks in ALFA AESAR's marketing, sales and distribution materials relative to the Products, including without limitation on the ALFA AESAR's Web site as a link/navigational button to the NTC Web site as posted by NTC.",
+            "start": 14560
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "AIRSPANNETWORKSINC_04_11_2000-EX-10.5-Distributor Agreement",
+    "richness": 6,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "South Dakota",
+            "start": 826
+          },
+          {
+            "text": "This Agreement shall be construed in accordance with and governed by the laws of the State of South Dakota.",
+            "start": 64901
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "During the term of this Agreement, and for a period of three (3) months following the expiration or termination of this Agreement, Distributor agrees that neither it nor any organization or entity controlled or directed by it will, without Airspan's prior, written consent, represent a manufacturer or supplier of products similar in design or performance to or which are of such a nature as to be competitive with any products contained in the Airspan Products, nor will Distributor market or otherwise promote the sale of such products.",
+            "start": 4148
+          },
+          {
+            "text": "Distributor will give Airspan thirty (30) days' prior, written notice of each new potential representation role being considered by Distributor, and Distributor will not undertake such representation without Airspan's prior, written consent, such consent not to be unreasonably withheld.",
+            "start": 4687
+          },
+          {
+            "text": "During the term of this Agreement Distributor agrees that neither it      nor any organization or entity controlled or directed by it will, without      Airspan's prior, written consent, represent a manufacturer or supplier of      products similar in design or performance to or which are of such a nature      as to be competitive with any products contained in the Airspan Products.",
+            "start": 12860
+          },
+          {
+            "text": "During the performance of this Agreement and for three (3) months after termination of services under this Agreement, Airspan will not offer products or services to third parties which compete with the products or services provided by Distributor under this Agreement, or otherwise use the knowledge acquired from Distributor in order to compete with Distributor its customers",
+            "start": 37858
+          },
+          {
+            "text": "Except as\n\n\n\n\n\nprovided above, in no event will Airspan consent to Distributor's consultation for or representation of a manufacturer or supplier, which is directly or indirectly, a competitor of Airspan.",
+            "start": 4975
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": false,
+        "spans": []
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Airspan shall not be liable to Distributor for damages of any kind, including incidental or consequential damages, on account of the termination of this agreement in accordance with this section 13.",
+            "start": 44747
+          },
+          {
+            "text": "WITHOUT PREJUDICE TO SECTION 16.4, NEITHER Airspan, NOR ANY OF ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, REPRESENTATIVES, SHAREHOLDERS, OR AFFILIATES (Airspan AND SUCH OTHER PERSONS, THE \"Airspan PARTIES\"), SHALL HAVE ANY LIABILITY TO DISTRIBUTOR FOR LOSS OF PROFITS, INCOME, REVENUE OR DATA, OR INCIDENTAL, CONSEQUENTIAL, INDIRECT OR PUNITIVE DAMAGES OR LOSSES, ARISING FROM OR IN CONNECTION WITH THIS AGREEMENT, ANY PURCHASE ORDER PLACED PURSUANT TO THIS AGREEMENT OR ANY OTHER COLLATERAL CONTRACT, OR FROM OR IN CONNECTION WITH THE EQUIPMENT OR THE SOFTWARE OR THE USE THEREOF OR THE INABILITY TO USE THEM EITHER SEPARATELY OR IN COMBINATION WITH OTHER EQUIPMENT OR SOFTWARE, OR FROM ANY OTHER CAUSE, WHETHER CAUSED BY NEGLIGENCE, BREACH OF CONTRACT, STRICT LIABILITY, BREACH OF WARRANTY, ON GROUNDS OF FAILURE OF ESSENTIAL PURPOSE OR OTHERWISE.",
+            "start": 50465
+          },
+          {
+            "text": "the Equipment or Software which gave rise to the loss or damage or in connection with which the loss or damage was incurred.",
+            "start": 52179
+          },
+          {
+            "text": "Airspan shall not be liable to Distributor on account of termination or expiration of this Agreement for reimbursement or damages for loss of goodwill, prospective profits, or anticipated orders, or on account of any expenditures, investments, leases, or commitments made by either party, or for any other reason whatsoever based upon or growing out of such termination or expiration.",
+            "start": 44947
+          },
+          {
+            "text": "Airspan's obligation and Distributor's sole remedy under this warranty are limited to the replacement or repair, at Airspan's option, of the defective Equipment or Software within the Initial Warranty Period.",
+            "start": 47419
+          },
+          {
+            "text": "And Distributor, taken as a whole, shall be liable for physical damage to Airspan's property resulting from Distributor's negligence under or in connection with this Agreement up to a maximum aggregate amount of one million US Dollars (US$1,000,000).",
+            "start": 52563
+          },
+          {
+            "text": "Airspan Parties, taken as a whole, shall be liable for physical damage to Distributor's property resulting from Airspan's negligence under or in connection with this Agreement up to a maximum aggregate amount of one million US Dollars (US$1,000,000).",
+            "start": 52311
+          },
+          {
+            "text": "In any event, Airspan shall not be liable      for any direct, indirect, consequential, or special losses or damages      (including, but not limited to, loss of income or profit and loss of data)      that may be suffered by the Distributor or by any other person for failure      to deliver or for any delay or error in delivery of Equipment or Software      for any reason whatsoever.",
+            "start": 26476
+          },
+          {
+            "text": "Without prejudice to Sections 16.3 and 16.4, the liability of the Airspan Parties, taken as a whole, for each event or series of connected events\n\n\n\n\n\narising out of or in connection with this Agreement, any purchase order placed pursuant to this Agreement, or any other collateral contract, or from or in connection with the Equipment or Software or the use thereof, or the inability to use them either separately or in combination with other equipment or software, or from any other cause, whether caused by negligence, breach of contract, strict liability, breach of warranty, on grounds of failure of essential purpose, or otherwise, shall in no circumstance exceed the total amount payable by Distributor to Airspan under this Agreement for the provision of",
+            "start": 51323
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Neither party may assign this Agreement or subcontract its obligations under this Agreement to another party without the other party's prior, written consent executed by a duly authorized officer.",
+            "start": 64547
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Subject to the provisions of this Agreement, Airspan hereby appoints Distributor as an independent, exclusive distributor to assist Airspan in marketing the Airspan Products to customers in the Territory, and Distributor hereby accepts such appointment as of the Effective Date of this Agreement.",
+            "start": 2046
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Distributor's appointment as a distributor of the Airspan Products grants to Distributor only a license to resell the",
+            "start": 2343
+          },
+          {
+            "text": "Airspan grants Distributor, and Distributor hereby accepts, a nonexclusive, non-transferable license to use, and to sublicense as set forth below, Software provided by Airspan hereunder only on a single System or unit of Equipment, as may be applicable.",
+            "start": 38370
+          },
+          {
+            "text": "Airspan Products to Distributor's customers in the Territory, and does not transfer any right, title, or interest in any of the Airspan Software to Distributor.",
+            "start": 2553
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "ImineCorp_20180725_S-1_EX-10.5_11275970_EX-10.5_Distributor Agreement",
+    "richness": 6,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement shall be governed by and construed pursuant to the laws of the State of Indiana, U.S.A., without reference to principals of conflicts of laws.",
+            "start": 32817
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The Distributor shall not, during the term of this Agreement, directly or indirectly market, sell, distribute, solicit orders within the Territory for any products which are competitive with the iMine Products unless JRVS consents thereto in writing in advance, based upon the Distributor's full disclosure of the material facts in seeking such consent.",
+            "start": 3793
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement may be terminated by either party for any reason or no reason, whether or not extended beyond the initial term, by giving the other party written notice ninety (90) days in advance.",
+            "start": 22828
+          }
+        ]
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "In the event of termination by either party in accordance with any of the provisions of this Agreement, neither party shall be liable to the other, because of such termination, for compensation, reimbursement or damages on account of the loss of prospective profits or anticipated sales or on account of expenditures, inventory, investments, leases or commitments in connection with the business or goodwill of either party.",
+            "start": 24549
+          },
+          {
+            "text": "IN NO EVENT SHALL JRVS BE LIABLE FOR COSTS OF PROCUREMENT OF SUBSTITUTE PRODUCTS OR SERVICES, LOST PROFITS OR ANY CONSEQUENTIAL, SPECIAL, INCIDENTAL, OR INDIRECT DAMAGES, HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY (INCLUDING NEGLIGENCE OR STRICT LIABILITY), ARISING OUT OF THIS AGREEMENT.",
+            "start": 25971
+          },
+          {
+            "text": "IN NO EVENT SHALL JRVS'S LIABILITY ARISING OUT OF THIS AGREEMENT EXCEED THE AMOUNT RECEIVED BY JRVS FROM THE DISTRIBUTOR HEREUNDER FOR THE PRODUCT GIVING RISE TO THE LIABILITY.",
+            "start": 25794
+          },
+          {
+            "text": "NO ACTIONS, REGARDLESS OF FORM, ARISING OUT OF THIS AGREEMENT, MAY BE BROUGHT BY DISTRIBUTOR MORE THAN ONE (1) YEAR AFTER THE CAUSE OF ACTION HAS ARISEN.",
+            "start": 26438
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The Distributor shall not assign any of its rights, obligations or privileges (by operation of law or otherwise) hereunder without the prior written consent of JRVS.",
+            "start": 28651
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": false,
+        "spans": []
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Subject to the terms and conditions of this Agreement, JRVS appoints the Distributor, and the Distributor hereby accepts such appointment, as JRVS'S non-exclusive authorized distributor for sale of the Products to the Customers (other than House Account) in the Territory (as these terms are defined in Section 1.8, above).",
+            "start": 2444
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_New",
+    "richness": 6,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "THIS AGREEMENT SHALL BE GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH THE LAWS OF THE SIATE OF TEXAS.",
+            "start": 58250
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Each of Licensor and Licensee understands and acknowledges that Licensor shall be entitled to protect and preserve the going concern value of Licensor's business to the extent permitted by law and that Licensor would not have entered into this Agreement absent the provisions of this Section 10.1 and, therefore, each of Licensor and Licensee agrees that during the term of this Agreement Licensee shall not engage in, represent in any way or be connected with directly or indirectly any business competing with the Licensed Products.",
+            "start": 37533
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": false,
+        "spans": []
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "If such error or discrepancy is not resolved within thirty (30) days after Licensee's",
+            "start": 45006
+          },
+          {
+            "text": "Licensor's total liability to Licensee under any provision of this Agreement shall be limited to the amount actually paid by Licensee to Licensor for the Licensed Product giving rise to the liability.",
+            "start": 46572
+          },
+          {
+            "text": "written notice to Licensor, then Licensee as its sole remedy may (a) extend  the correction period to a date which is agreeable to Licensor and Licensee  or (b) return all copies of the Licensed Products to Licensor with a  certification by an authorized representative of Licensee that all copies  have been returned to Licensor or have been destroyed and that Licensee has  not retained any copies thereof and Licensor shall refund to Licensee the  amount paid by Licensee to Licensor for such Licensed Products.",
+            "start": 45134
+          },
+          {
+            "text": "IN NO EVENT SHALL A PARTY TO THIS AGREEMENT BE LIABLE TO THE OTHER PARTY TO THIS AGREEMENT FOR ANY SPECIAL, INDIRECT,\n\n\n\n\n\nINCIDENTAL OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE, OR INABILITY TO USE, THE LICENSED PRODUCTS OR ARISING OUT OF THIS AGREEMENT, INCLUDING BUT NOT LMTED TO LOSS OF PROFIT OR OTHER MONETARY LOSS, LOSS OR INTERRUPTION OF DATA OR CONTUTER TIME, ALTERATION OR ERRONEOUS TRANSNUSSION OF DATA OR PROGRAM ERRORS, EVEN IF SUCH PARTY IS ADVISED IN ADVANCE OF THE POSSIBILITY OF SUCH DAMAGES.",
+            "start": 47042
+          },
+          {
+            "text": "THE REMEDIES SPECIFIED ABOVE SHALL BE THE SOLE AND EXCLUSIVE REMEDIES OF LICENSEE REGARDING THE LICENSED PRODUCTS.",
+            "start": 45909
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Neither this Agreement nor any of the rights, interests or obligations hereunder shall be assigned by any of the parties hereto without the prior written consent of the other party to this Agreement; provided, however, that Licensor may assign this Agreement to a subsidiary or entity controlling, controlled by or under common control with Licensor.",
+            "start": 58380
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Licensor hereby grants to Licensee an exclusive in the Territory to (1) make Sublicense Copies and copies of the Documentation to meet the demand of Redistributors and Customers and (2) market and sublicense Sublicense Copies and copies of the Documentation, together with any copies of promotional and other materials which Licensor may produce or obtain from time to time to assist Licensee in marketing and sublicensing the Licensed Products during the term of this Agreement by any one or more of the following means:\n\n     (a)  TO A REDISTRIBUTOR: To a Redistributor pursuant to a Redistributor           Agreement containing substantially the same terms and conditions as           are set forth in this Agreement (subject to Section 2.5) and a           Sublicense with each Customer of Redistributor in accordance with           subsection 2.2(b); or\n\n     (b)  TO CUSTOMERS: Pursuant to a Sublicense signed by the Customer.",
+            "start": 5564
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Licensor hereby grants to Licensee a non-exclusive right to use the trademarks, service marks, trade names, copyrights, logos and designations (collectively, the \"Marks\") relating to the Licensed Products or the Documentation during the term of this Agreement in the marketing by Licensee of the Licensed Products, provided that such Marks clearly indicate Licensor as the owner of the Marks whenever the Licensed Product or Documentation is first mentioned in any written material referencing the Licensed Product and the proper symbol is used in a superscript following the Marks.",
+            "start": 9218
+          },
+          {
+            "text": "Licensor hereby grants to Licensee an exclusive in the Territory to (1) make Sublicense Copies and copies of the Documentation to meet the demand of Redistributors and Customers and (2) market and sublicense Sublicense Copies and copies of the Documentation, together with any copies of promotional and other materials which Licensor may produce or obtain from time to time to assist Licensee in marketing and sublicensing the Licensed Products during the term of this Agreement by any one or more of the following means:\n\n     (a)  TO A REDISTRIBUTOR: To a Redistributor pursuant to a Redistributor           Agreement containing substantially the same terms and conditions as           are set forth in this Agreement (subject to Section 2.5) and a           Sublicense with each Customer of Redistributor in accordance with           subsection 2.2(b); or\n\n     (b)  TO CUSTOMERS: Pursuant to a Sublicense signed by the Customer.",
+            "start": 5564
+          },
+          {
+            "text": "Licensor hereby grants to Licensee a non- exclusive, worldwide right to use and reproduce the Master Copy of each Licensed Product and the related Documentation during the term of this Agreement for testing, demonstration to Redistributors. and Customers, support and maintenance, if any, back-up and archive purposes.",
+            "start": 5214
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "NEOMEDIATECHNOLOGIESINC_12_15_2005-EX-16.1-DISTRIBUTOR AGREEMENT",
+    "richness": 5,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The validity, construction, and performance of this Agreement shall be governed by and interpreted in accordance with the laws of the People's Republic of China.",
+            "start": 33857
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": false,
+        "spans": []
+      },
+      "Termination For Convenience": {
+        "present": false,
+        "spans": []
+      },
+      "Cap On Liability": {
+        "present": true,
+        "spans": [
+          {
+            "text": "For the avoidance of          doubt, PPG SHANGHAI hereby declares and represents that PPG SHANGHAI is          not responsible for any damage to the Products after they have been          taken away from PPG SHANGHAI's warehouse and caused by DISTRIBUTOR or          its transport agent.",
+            "start": 18522
+          },
+          {
+            "text": "Notwithstanding the provisions of any law, rule, or regulation to the contrary, on the termination of this Agreement for any cause whatsoever, DISTRIBUTOR shall not be entitled to claim or receive from PPG SHANGHAI any compensation, reimbursement, or damages on account of any expenditure or commitment of any kind in connection with its business or on account of goodwill or on account of loss of prospective profits or otherwise.",
+            "start": 25396
+          },
+          {
+            "text": "PPG          SHANGHAI will not accept any claims for discrepancy in delivery beyond          the 48 hours period.",
+            "start": 19199
+          },
+          {
+            "text": "In no event shall PPG SHANGHAI be liable for consequential damages.",
+            "start": 25828
+          },
+          {
+            "text": "In the event that the Product fails to          conform to the warranties herein given, DISTRIBUTOR's exclusive remedy          and PPG SHANGHAI's sole responsibility is, at PPG SHANGHAI's option,          limited to the replacement of such nonconforming Product at PPG          SHANGHAI's expense or the refund of the purchase price attributable to          a specific delivery as to which a claim is made.",
+            "start": 18114
+          }
+        ]
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": ".",
+            "start": 10
+          },
+          {
+            "text": "PPG SHANGHAI shall have the right to terminate this Agreement and/or          suspend its performance hereunder immediately upon giving notice to          DISTRIBUTOR, which termination shall be effective upon receipt of          notice, if any one of the following occurs:",
+            "start": 30722
+          },
+          {
+            "text": "(iii) DISTRIBUTOR becomes insolvent, assigns or attempts to assign its          business assets for the benefit of creditors, institutes or has          instituted against it proceedings in bankruptcy, or dissolves or          liquidates the business of DISTRIBUTOR",
+            "start": 31346
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "PPG          Shanghai or any of its direct or indirect affiliates shall not sell any          of its products directly to the Auto Center or to any of the Auto          Center's affiliates in China or throughout the world, unless PPG          Shanghai obtains Distributor's written approval.",
+            "start": 3153
+          },
+          {
+            "text": "During the term of this Agreement, DISTRIBUTOR shall have          the exclusive right for selling the Products to Beijing Sino-US Jinche          Yingang Auto Technological Services Limited (the \"Auto Center\").",
+            "start": 2941
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "PPG SHANGHAI hereby grants to          DISTRIBUTOR during the Term, subject to the terms and conditions          hereinafter specified, a limited, nonexclusive, nonassignable and          nontransferable right to use the PPG Trademarks in the Territory for or          in connection with its advertisement, promotion, sale and distribution          of Products.",
+            "start": 14378
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "FuseMedicalInc_20190321_10-K_EX-10.43_11575454_EX-10.43_Distributor Agreement",
+    "richness": 4,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This agreement and any dispute or claim arising out of or in connection with it or its subject matter or formation (including non-contractual disputes or claims) shall be governed by and construed in accordance with Ohio law.",
+            "start": 30821
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The Distributor shall not:",
+            "start": 5037
+          },
+          {
+            "text": "act as the agent or the buying agent, for any person for any goods which are competitive with the Product; or",
+            "start": 5418
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": false,
+        "spans": []
+      },
+      "Cap On Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The Distributor shall not assign, transfer, mortgage, charge, declare a trust of or deal in any other manner with this agreement or any of its rights and obligations under or arising out of this agreement, or purport to do any of the same; provided, however, the Distributor may assign or transfer this agreement to a Permitted Assignee without the consent of Supplier.",
+            "start": 26015
+          },
+          {
+            "text": "Without affecting any other rights that it may be entitled to, the Supplier may give notice in writing to the Distributor terminating this agreement immediately if the Distributor purports to assign its rights or obligations under this agreement to an entity that is not (1) affiliated with, (2) related to, or (3) sharing common ownership with the Distributor (a Permitted Assignee).",
+            "start": 21828
+          },
+          {
+            "text": "The Distributor shall not sub-contract or delegate in any manner any or all of its obligations under this agreement to any third party or agent.",
+            "start": 26385
+          },
+          {
+            "text": "The Distributor shall not sub-license, transfer or otherwise deal with the rights of use of the Trade Marks granted under this agreement.",
+            "start": 12823
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": false,
+        "spans": []
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "The Supplier hereby grants to the Distributor the non-exclusive right, in the Territory, to use the Trade Marks in the promotion, advertisement and sale of the Products, subject to, and for the duration of, this agreement.",
+            "start": 11688
+          }
+        ]
+      }
+    }
+  },
+  {
+    "title": "PrecheckHealthServicesInc_20200320_8-K_EX-99.2_12070169_EX-99.2_Distributor Agreement",
+    "richness": 4,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement shall be construed in accordance with and governed by the laws of the State of Texas without regard to principles of conflicts of laws.",
+            "start": 5309
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Unless accepted by the Principal, the Distributor agrees that during the term of this Agreement, the Distributor, either directly or indirectly, shall handle no products that are competitive with the Products within the Territory.",
+            "start": 2451
+          }
+        ]
+      },
+      "Termination For Convenience": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement shall be in effect until March 18. 2021, unless sooner terminated by either party upon (30) days written notice, without cause.",
+            "start": 3631
+          }
+        ]
+      },
+      "Cap On Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Agreement shall not be assigned by the Distributor without the prior written consent of the Principal.",
+            "start": 5067
+          }
+        ]
+      },
+      "Exclusivity": {
+        "present": false,
+        "spans": []
+      },
+      "License Grant": {
+        "present": false,
+        "spans": []
+      }
+    }
+  },
+  {
+    "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+    "richness": 3,
+    "checklist": {
+      "Governing Law": {
+        "present": true,
+        "spans": [
+          {
+            "text": "This Distributor Agreement shall be exclusively governed, construed, enforced and controlled by the laws of the United States of America and of the State of Texas.",
+            "start": 33927
+          }
+        ]
+      },
+      "Non-Compete": {
+        "present": false,
+        "spans": []
+      },
+      "Termination For Convenience": {
+        "present": false,
+        "spans": []
+      },
+      "Cap On Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Uncapped Liability": {
+        "present": false,
+        "spans": []
+      },
+      "Anti-Assignment": {
+        "present": false,
+        "spans": []
+      },
+      "Exclusivity": {
+        "present": true,
+        "spans": [
+          {
+            "text": "Company agrees that no other Distributor will be appointed in any other state as a Distributor unless it is either the Company or Distributor, save and except for the state of Florida.",
+            "start": 4010
+          },
+          {
+            "text": "Company hereby appoints Distributor as Company's exclusive Distributor for the State of Texas, and Distributor accepts the appointment and agrees to represent the Products within the Territory.",
+            "start": 3816
+          }
+        ]
+      },
+      "License Grant": {
+        "present": true,
+        "spans": [
+          {
+            "text": "For the term of this Agreement, Company grants Distributor a limited, revocable, non-transferable, non-exclusive license under Company's copyrights to use the Company Products at Distributor's facilities in the Territory solely for marketing and support purposes directly related to the performance of its duties under this Agreement.",
+            "start": 14656
+          }
+        ]
+      }
+    }
+  }
+]
