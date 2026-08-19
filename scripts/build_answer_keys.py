@@ -40,11 +40,16 @@ CHECKLIST = [
     "License Grant",
 ]
 
-# Amendment-only riders, not standalone contracts -- excluded from the
-# corpus. See DECISIONS.md "Corpus Cleaning".
+# Amendment/addendum-only riders, not standalone contracts -- excluded from
+# the corpus. Title-based filtering alone misses these (e.g. "Amendment
+# No. 3 to the ... Distributor Agreement" is titled just "...Distributor
+# Agreement" in CUAD's metadata) -- caught by scanning each doc's opening
+# text for AMENDMENT/ADDENDUM language. See DECISIONS.md "Corpus Cleaning".
 EXCLUDE_TITLES = {
     "NETGEAR,INC_04_21_2003-EX-10.16-AMENDMENT TO THE DISTRIBUTOR AGREEMENT BETWEEN INGRAM MICRO AND NETGEAR",
     "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+    "ScansourceInc_20190509_10-Q_EX-10.2_11661422_EX-10.2_Distributor Agreement",  # Addendum
+    "ScansourceInc_20190822_10-K_EX-10.39_11793959_EX-10.39_Distributor Agreement",  # Amendment No. 3
 }
 
 
@@ -147,13 +152,13 @@ def main():
     docs = [extract_doc_record(e) for e in raw_docs if e["title"] not in EXCLUDE_TITLES]
 
     assert len(raw_docs) == 31, f"expected 31 raw title matches, got {len(raw_docs)}"
-    assert len(docs) == 29, f"expected 29 clean docs, got {len(docs)}"
+    assert len(docs) == 27, f"expected 27 clean docs, got {len(docs)}"
 
     docs.sort(key=lambda d: (-d["richness"], d["title"]))
 
-    dev, validation = stratified_split(docs, n_validation=9)
+    dev, validation = stratified_split(docs, n_validation=7)
     assert len(dev) == 20, f"expected 20 dev docs, got {len(dev)}"
-    assert len(validation) == 9, f"expected 9 validation docs, got {len(validation)}"
+    assert len(validation) == 7, f"expected 7 validation docs, got {len(validation)}"
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
