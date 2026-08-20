@@ -25,6 +25,16 @@ Format per entry: **Decision** → **Reasoning** → **Alternatives considered /
 - Reasoning: [why per-minute rate limits and daily quota exhaustion need different handling; why grounding failures skip straight to fallback]
 - Rejected: 5-tier cascade (Gemini → Groq → OpenRouter → local Ollama → rule-based) — cut for 1-week time budget, documented as an ideal-version extension instead.
 
+## Timeout
+- Decision: 62 seconds per API call (any provider).
+- Reasoning: measured real Gemini call latency on 3 sample docs (17.9s, 23.9s, 20.6s; avg 20.8s), then applied the plan's stated rule (3x measured average) rather than guessing a round number. Implemented as a hard thread-based timeout wrapper around every generate call (`retry_policy._call_with_timeout`) -- a timeout is classified as TRANSIENT and enters the same retry-with-backoff path as a network error, since a hung call and a network hiccup need the same response (retry, then escalate).
+- What I'd change if I did it again: re-measure once Groq's typical latency is known too (currently only measured against Gemini) -- if Groq's calls run meaningfully faster or slower, a single shared timeout may be too loose for one provider and too tight for the other.
+
+## Groq Model Selection
+- Decision: `openai/gpt-oss-120b`, overridable via `GROQ_MODEL` env var.
+- Reasoning: the first guess (`llama-3.3-70b-versatile`, from training knowledge) turned out to be stale -- verified against a live `client.models.list()` call once a real API key was available and it wasn't in Groq's current lineup at all. Picked the largest general-purpose chat model actually present in the live list. Tested directly against the Etelos sample doc: 8/8 exact match against ground truth.
+- What I'd change if I did it again: always verify a third-party model name against the provider's live API before hardcoding it, rather than trusting training-data knowledge of a fast-moving model catalog.
+
 ## Orchestration & Tooling
 - Decision: hand-written Python for v1, LangGraph migration deferred to a dedicated post-v1 phase; Langfuse for tracing regardless of orchestration choice.
 - Reasoning: [defensibility given current Python level; framework abstractions vs. custom fallback logic]
@@ -55,6 +65,12 @@ Format per entry: **Decision** → **Reasoning** → **Alternatives considered /
 - Result: 23/24 clause-level calls correct (95.8%) on this tiny sample. Etelos and Zogenix: exact match, 8/8 and 6/8 respectively. SmartRx: 7/8 -- one false positive, Cap On Liability called PRESENT when ground truth (and my own Phase 0 spot-check reading) says ABSENT. Gemini quoted real, grounded text from the contract's "LIMITATION OF LIABILITY" section header, but that section is actually just warranty disclaimers -- the real cap subsection is literally "9.6 INTENTIONALLY LEFT BLANK" in the source. The model conflated "warranty disclaimer" with "liability cap." No hallucinated/ungrounded quotes on any of the 3 docs -- the grounding check never had to reject anything.
 - Reasoning: 3 docs is nowhere near enough to claim an accuracy number (that's Phase 4's job, over the full 20-doc dev set) -- this only proves the pipeline's shape works end to end and gives one concrete, already-understood failure mode to watch for when prompt-tuning later.
 - What I'd change if I did it again: nothing yet -- too early, this is exactly the kind of miss Phase 4's regression suite and prompt iteration is supposed to catch and fix.
+
+## Phase 2 — Fault Injection Testing
+- Decision: tested every failure path in the chain, not just the happy path -- two real (unmocked) induced failures plus 5 mocked unit tests for the failure types that don't reproduce reliably on demand from a live API.
+- Real tests: (1) invalid Gemini API key + real Groq key -> pipeline correctly escalated to the Groq tier, produced a correct memo (6/8, matches ground truth), flagged `fallback_used: true` / `fallback_tier: groq`. (2) invalid keys on *both* Gemini and Groq -> escalated all the way to the rule-based tier, still produced a correct memo (6/8), never crashed, never returned nothing.
+- Mocked tests (`tests/test_retry_policy.py`): TRANSIENT retries exactly 2x with real exponential backoff (timed: >=6s elapsed for 2s+4s) then fails the tier; MALFORMED_OUTPUT retries exactly 1x with a corrective instruction actually appended to the second call; GROUNDING_FAILURE and QUOTA_EXHAUSTED both fail on the first attempt with zero retries, per the plan's reasoning that retrying either just reproduces the same failure.
+- Reasoning: this is the literal Phase 1 deliverable text ("pipeline survives induced failures ... without ever crashing or returning nothing") -- verifying it by actually breaking things, not by reading the retry code and assuming it works.
 
 ## What I Tried That Failed
 - [Fill in during build — e.g. "tried X threshold for grounding check, broke on Y case because Z, switched to..."]

@@ -6,6 +6,7 @@ is non-retryable), the tier fails and the caller escalates to the next
 fallback tier.
 """
 import time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 from dataclasses import dataclass, field
 
 from .failure_types import FailureType, classify_api_error, has_grounding_failure
@@ -13,6 +14,20 @@ from .failure_types import FailureType, classify_api_error, has_grounding_failur
 TRANSIENT_MAX_RETRIES = 2
 MALFORMED_MAX_RETRIES = 1
 BACKOFF_BASE_SECONDS = 2  # exponential: 2s, 4s -- clears a per-minute rate-limit window
+
+# 3x measured average call latency (Gemini, 3-doc sample: 17.9s/23.9s/20.6s,
+# avg 20.8s) -- empirical, not guessed. See DECISIONS.md "Timeout".
+CALL_TIMEOUT_SECONDS = 62
+
+_executor = ThreadPoolExecutor(max_workers=4)
+
+
+def _call_with_timeout(fn, *args, timeout=CALL_TIMEOUT_SECONDS):
+    future = _executor.submit(fn, *args)
+    try:
+        return future.result(timeout=timeout)
+    except FutureTimeoutError:
+        raise TimeoutError(f"call exceeded {timeout}s timeout")
 
 
 @dataclass
@@ -48,7 +63,7 @@ def run_llm_tier(
 
     while True:
         try:
-            raw = generate_raw_fn(extra_instruction)
+            raw = _call_with_timeout(generate_raw_fn, extra_instruction)
         except Exception as exc:
             ftype = classify_api_error(exc)
             attempts_log.append({"stage": "generate", "failure_type": ftype.value, "error": str(exc)})
