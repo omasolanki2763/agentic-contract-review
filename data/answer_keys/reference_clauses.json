@@ -1,0 +1,98 @@
+{
+  "Governing Law": [
+    {
+      "text": "This Agreement shall be construed in accordance with and governed by the laws of the State of Texas without regard to principles of conflicts of laws.",
+      "source_doc": "PrecheckHealthServicesInc_20200320_8-K_EX-99.2_12070169_EX-99.2_Distributor Agreement",
+      "avg_similarity": 0.498
+    },
+    {
+      "text": "This Agreement shall be governed by and interpreted under and in accordance with the laws of the State of Delaware without regard to principles of conflicts of laws.",
+      "source_doc": "NANOPHASETECHNOLOGIESCORP_11_01_2005-EX-99.1-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.456
+    }
+  ],
+  "Non-Compete": [
+    {
+      "text": "During the term of this Agreement Distributor agrees that neither it      nor any organization or entity controlled or directed by it will, without      Airspan's prior, written consent, represent a manufacturer or supplier of      products similar in design or performance to or which are of such a nature      as to be competitive with any products contained in the Airspan Products.",
+      "source_doc": "AIRSPANNETWORKSINC_04_11_2000-EX-10.5-Distributor Agreement",
+      "avg_similarity": 0.238
+    },
+    {
+      "text": "During the term of this Agreement, and for a period of three (3) months following the expiration or termination of this Agreement, Distributor agrees that neither it nor any organization or entity controlled or directed by it will, without Airspan's prior, written consent, represent a manufacturer or supplier of products similar in design or performance to or which are of such a nature as to be competitive with any products contained in the Airspan Products, nor will Distributor market or otherwise promote the sale of such products.",
+      "source_doc": "AIRSPANNETWORKSINC_04_11_2000-EX-10.5-Distributor Agreement",
+      "avg_similarity": 0.237
+    }
+  ],
+  "Termination For Convenience": [
+    {
+      "text": "This Agreement may be terminated at any time without cause by either party upon ninety (90) days written notice to the other party.",
+      "source_doc": "NETGEAR,INC_04_21_2003-EX-10.16-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.318
+    },
+    {
+      "text": "This Agreement may be canceled at any time without cause, by either party upon ninety (90) days written notice to the other party.",
+      "source_doc": "NETGEAR,INC_04_21_2003-EX-10.16-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.309
+    }
+  ],
+  "Cap On Liability": [
+    {
+      "text": "Neither party shall be liable to the other party for any special, incidental, or consequential damages arising in connection with, or out of termination of, this agreement.",
+      "source_doc": "VISIUMTECHNOLOGIES,INC_10_20_2004-EX-10.20-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.226
+    },
+    {
+      "text": "IN NO EVENT SHALL EITHER PARTY BE LIABLE TO THE OTHER FOR ANY SPECIAL, INDIRECT, EXEMPLARY OR CONSEQUENTIAL DAMAGES ARISING OUT OF THIS AGREEMENT OR PURCHASE OR USE OF THE PRODUCTS.",
+      "source_doc": "GentechHoldingsInc_20190808_1-A_EX1A-6 MAT CTRCT_11776814_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "avg_similarity": 0.222
+    }
+  ],
+  "Uncapped Liability": [
+    {
+      "text": "WITHOUT AFFECTING STRICT PRODUCT LIABILITY UNDER MANDATORY APPLICABLE LAW,  SECTION 10, OR THE RESPECTIVE OBLIGATIONS OF THE PARTIES UNDER THE CONFIDENTIAILITY AGREEMENT AND  EXCEPT FOR BREACHES ASSOCIATED WITH THE UNAUTHORIZED USE OF INTELLECTUAL PROPERTY, IN NO EVENT  SHALL EITHER PARTY BE LIABLE TO THE OTHER PARTY FOR SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR  TORT DAMAGES, INCLUDING WITHOUT LIMITATION, ANY DAMAGES RESULTING FROM LOSS OF USE, LOSS OF DATA,  LOSS OF PROFITS OR LOSS OF BUSINESS ARISING OUT OF OR IN CONNECTION WITH THE MATTERS CONTEMPLATED  BY THIS AGREEMENT, WHETHER OR NOT A PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
+      "source_doc": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.252
+    },
+    {
+      "text": "EXCEPT FOR DAMAGES ARISING FROM BREACH OF SECTIONS 6.C AND 12,13 OR 17, IN NO EVENT WELL DISTRIBUTOR's TOTAL LIABILITY FOR ANY DAMAGES IN ANY ACTION BASED ON OR ARISING OUT OF OR IN CONNECTION WITH THE AGREEMENT EXCEED THE [*] TO NETGEAR PURSUANT TO THE AGREEMENT.",
+      "source_doc": "NETGEAR,INC_04_21_2003-EX-10.16-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.232
+    }
+  ],
+  "Anti-Assignment": [
+    {
+      "text": "Distributor shall not assign this Agreement or any rights or obligations hereunder without the prior written consent of the Company.",
+      "source_doc": "BLACKBOXSTOCKSINC_08_05_2014-EX-10.1-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.294
+    },
+    {
+      "text": "Neither Party may assign any right, or delegate any duty under this Agreement, in whole or in part, without the prior written consent of the other Party, which shall not be unreasonably withheld or delayed.",
+      "source_doc": "WaterNowInc_20191120_10-Q_EX-10.12_11900227_EX-10.12_Distributor Agreement",
+      "avg_similarity": 0.279
+    }
+  ],
+  "Exclusivity": [
+    {
+      "text": "The Company appoints the Distributor as an  exclusive  distributor  of Products in the Market,  subject to the terms and conditions of this Agreement.",
+      "source_doc": "LIMEENERGYCO_09_09_1999-EX-10-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.226
+    },
+    {
+      "text": "Company  hereby   appoints                            Distributor as Company's exclusive distributor within                            the Market and grants to  Distributor  the  exclusive                            right  to sell and  distribute  Products  within  the                            Market,   and   Distributor   hereby   accepts   such                            appointment  and such grant,  in accordance  with the                            terms and conditions of this  Agreement.",
+      "source_doc": "LIMEENERGYCO_09_09_1999-EX-10-DISTRIBUTOR AGREEMENT",
+      "avg_similarity": 0.221
+    }
+  ],
+  "License Grant": [
+    {
+      "text": "The Supplier hereby grants to the Distributor the non-exclusive right, in the Territory, to use the Trade Marks in the promotion, advertisement and sale of the Products, subject to, and for the duration of, this agreement.",
+      "source_doc": "FuseMedicalInc_20190321_10-K_EX-10.43_11575454_EX-10.43_Distributor Agreement",
+      "avg_similarity": 0.257
+    },
+    {
+      "text": "During the term of this Agreement, Erchonia grants Distributor a non-exclusive, non-transferable license to use the Trademarks for advertising and promotion of Products.",
+      "source_doc": "InnerscopeHearingTechnologiesInc_20181109_8-K_EX-10.6_11419704_EX-10.6_Distributor Agreement",
+      "avg_similarity": 0.255
+    }
+  ]
+}

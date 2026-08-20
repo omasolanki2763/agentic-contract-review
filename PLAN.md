@@ -1,32 +1,34 @@
-# Portfolio Project Plan: Agentic NDA Clause-Review Pipeline with Full Observability
+# Portfolio Project Plan: Agentic Contract Clause-Review Pipeline with Full Observability
 
 ## Context
 
 Portfolio project for ML/GenAI + data-science entry-level roles (India, fresher, prepping for job search + master's applications simultaneously). Built by a fresher who is still learning core Python, using Claude Code as the implementation tool, with a hard rule: every phase gets reviewed and understood before the next one starts, because the entire point of the project is being able to defend every design choice out loud in a technical interview — a working demo that can't be explained is worth nothing.
 
-**What actually gets built:** an agent that reads an NDA (PDF), checks it against a fixed checklist of legal clause types, and produces a decision memo — but the memo itself is explicitly the *boring* part. The differentiator is everything wrapped around it: traced execution, token/cost accounting, a real retry/timeout/fallback policy with documented reasoning per threshold, and a regression suite over a hand-inspected ground-truth set that catches silent breakage when a prompt changes.
+**What actually gets built:** an agent that reads a contract (PDF), checks it against a fixed checklist of legal clause types, and produces a decision memo — but the memo itself is explicitly the *boring* part. The differentiator is everything wrapped around it: traced execution, token/cost accounting, a real retry/timeout/fallback policy with documented reasoning per threshold, and a regression suite over a hand-inspected ground-truth set that catches silent breakage when a prompt changes.
+
+**Domain pivot (Phase 0 finding, verified not assumed):** originally scoped as NDA-only. Verifying CUAD in Phase 0 found CUAD organizes its 510 contracts into 25 documented business-relationship types, and **NDA is not one of them** — a keyword/document-name search across all 510 lawyer-labeled contracts found essentially zero true NDAs (2 loose keyword hits, neither an actual NDA). Rather than hand-build an NDA ground truth from an unlabeled source (which would have blown the 1-week budget and the whole point of using an expert-labeled dataset), the domain pivoted to **Distributor Agreement** — CUAD's real type with the best clause-checklist fit (see the "Domain & Scope" decision in DECISIONS.md for the full comparison against License Agreements, the runner-up). The project was renamed `agentic-contract-review` accordingly — general enough to not misrepresent the actual domain, and to fit the ideal-version goal of pluggable multi-type support.
 
 ---
 
 ## Scope (v1) vs. Ideal Version vs. Explicit Non-Goals
 
 ### v1 scope (buildable in ~1 week at current Python level)
-- **Domain:** legal contract review, **NDA contract type only**.
-- **Data source:** CUAD (Contract Understanding Atticus Dataset) — free, public, ~510 real commercial contracts with lawyer-applied clause labels across 41 categories; NDA-type contracts are a subset of that.
-- **Clause checklist:** 6-8 CUAD categories relevant to NDAs — starting list: **Governing Law, Non-Compete, No-Solicit of Employees, Termination for Convenience, Cap on Liability, Uncapped Liability, IP Ownership Assignment, Anti-Assignment**. Finalize exact list against CUAD's schema in Phase 0 (some categories may not appear often enough in the NDA subset to be useful — swap as needed, document the swap).
+- **Domain:** legal contract review, **Distributor Agreement contract type only** (pivoted from NDA in Phase 0 — see Context above and DECISIONS.md).
+- **Data source:** CUAD (Contract Understanding Atticus Dataset) — free, public, 510 real commercial contracts with lawyer-applied clause labels across 41 categories, organized into 25 documented contract types. Distributor Agreement is one of those 25 types: 31 documents by title match, **27 after excluding 4 amendment/addendum-only riders** (not standalone contracts — see DECISIONS.md "Corpus Cleaning"; 2 were missed on the first title-only pass and caught later by scanning document body text).
+- **Clause checklist:** 8 CUAD categories, finalized against real coverage data measured in Phase 0 on the clean 27-doc corpus (not guessed): **Governing Law (100%), Non-Compete (48%), Termination for Convenience (48%), Cap on Liability (78%), Uncapped Liability (26%), Anti-Assignment (89%), Exclusivity (70%), License Grant (85%)**. Two categories from the original NDA-oriented list (No-Solicit of Employees, IP Ownership Assignment) were dropped after Phase 0 measurement showed they're nearly absent in this domain and replaced with Exclusivity and License Grant, both core to distributor deals.
 - **Per-clause output:** Present/Absent, exact quoted text (grounded — verified to actually exist in the source), location, occurrence count, and a binary **Matches-standard / Deviates-from-standard** flag (comparison against a reference clause text derived from CUAD's own corpus — not a legal-risk judgment, just a text-similarity detection the human reader interprets themselves).
 - **Document summary line:** simple completeness count ("X of Y checklist clauses found present") — no weighted score, no Compliant/Flagged/Non-compliant verdict label.
 - **PDF parsing:** pdfplumber first; a lightweight heuristic (extracted-text-length vs. page count, garbage-character ratio) detects failure; OCR/LLM extraction only runs as a fallback if the heuristic flags a problem.
 - **Failure handling / fallback chain:** Gemini (primary) → Groq (AI fallback, different provider) → rule-based regex/keyword fallback (last resort, always produces *something*). Output is flagged when a fallback tier was used.
 - **Orchestration:** hand-written plain Python — no agent framework in v1.
 - **Tracing:** Langfuse (free tier), used standalone via its SDK, independent of orchestration choice.
-- **Ground truth — two-stage:** (1) a **dev set of 20 documents**, spot-checked (3-5+ personally read against source), used continuously during Phases 1-4 as the fast regression suite re-run after every prompt tweak; (2) a **full-set answer key covering all NDA-type contracts in CUAD**, built mechanically at the same time as the dev set (cheap, no reason to delay), but not run against the pipeline until it's passing well on the dev set — then run once as a broader final validation pass, catching cases the dev set never specifically debugged against. Both answer keys built mechanically from CUAD's existing labels.
+- **Ground truth — two-stage:** (1) a **dev set of 20 documents**, spot-checked (3-5+ personally read against source), used continuously during Phases 1-4 as the fast regression suite re-run after every prompt tweak; (2) a **full-set answer key covering the remaining 7 Distributor Agreement contracts in CUAD** (27 clean total − 20 dev = 7), built mechanically at the same time as the dev set (cheap, no reason to delay), but not run against the pipeline until it's passing well on the dev set — then run once as a broader final validation pass, catching cases the dev set never specifically debugged against. Both answer keys built mechanically from CUAD's existing labels. (The full-validation set is thinner than originally assumed — 7 docs, not "dozens" — a direct consequence of the domain pivot plus the amendment-exclusion cleanup; still useful as an overfitting check, just weaker statistically than hoped.)
 - **Metrics:** clause-level accuracy AND document-level accuracy, reported together. Target **90%** on both — a practical bar, not 100% (chasing perfection on a small/derived eval set risks silently tuning prompts to the eval set itself rather than generalizing).
 - **Speed:** no invented number up front — measure real happy-path latency once the pipeline runs, then optimize down as far as practical. Retry/fallback-triggered runs are allowed to take longer than the happy path; that's an accepted reliability trade-off, not a bug.
 - **Cost tracking:** token counts logged on every run from day one (cheap, always-on). Whether to build a cost-reporting/dashboard *feature* on top of the logs is decided near the end of the build, based on remaining time.
 
 ### Explicit non-goals for v1 (cut deliberately, not by oversight — say so if asked)
-- No multi-contract-type support (NDA only; other types are a checklist swap away, not built).
+- No multi-contract-type support (Distributor Agreement only; other types are a checklist swap away, not built).
 - No severity/risk grading of a clause deviation — binary flag only, no "how bad" judgment, because that requires legal expertise not held.
 - No weighted/aggregate compliance verdict (no "Compliant/Flagged/Non-compliant" label) — same reason.
 - No semantic/embedding-based matching anywhere (grounding check or reference comparison) — fuzzy string matching only. Cheaper, faster, and avoids an unjustifiable similarity threshold.
@@ -48,7 +50,7 @@ Portfolio project for ML/GenAI + data-science entry-level roles (India, fresher,
 ## Architecture
 
 ```
-PDF (NDA)
+PDF (Distributor Agreement)
   │
   ▼
 [1] PDF Text Extraction
@@ -80,8 +82,8 @@ Steps [1] and [2] are the only steps that call an external LLM/API and therefore
 
 | Parameter | v1 Value | Reason |
 |---|---|---|
-| Contract type | NDA only | Bounds ground truth and checklist to one coherent domain; avoids "does this clause even apply to this contract type" ambiguity. |
-| Clause checklist size | 6-8 categories | Common/high-value NDA clauses; explicitly disclosed as non-exhaustive rather than pretending completeness — standard practice in real legal-tech scoping. |
+| Contract type | Distributor Agreement only (pivoted from NDA — CUAD has no NDA type) | Bounds ground truth and checklist to one coherent domain; avoids "does this clause even apply to this contract type" ambiguity. Distributor Agreement chosen over the runner-up (License Agreement, 36 docs) because measured checklist-clause coverage is stronger across the board — see DECISIONS.md. |
+| Clause checklist size | 8 categories | Common/high-value Distributor Agreement clauses, each with measured presence-rate ≥23% in the actual data; explicitly disclosed as non-exhaustive rather than pretending completeness — standard practice in real legal-tech scoping. |
 | Per-clause scoring | Binary (Present/Absent) + binary (Matches/Deviates standard) | Avoids needing legal judgment to grade "how broken" a clause is; still concretely useful since the actual clause text is shown for the human to judge. |
 | Clause weighting | None (simple completeness count) | A weighted/aggregate score needs defensible per-clause weights, which needs legal expertise not held; a plain count needs none. |
 | Reference clause source | Derived from CUAD's own corpus (most common phrasing per category) | Fully data-driven, no external legal research needed, defensible as a factual dataset claim rather than a legal opinion. |
@@ -97,17 +99,17 @@ Steps [1] and [2] are the only steps that call an external LLM/API and therefore
 | Orchestration | Hand-written Python | Full transparency for defensibility at current Python level; the custom fallback/retry logic doesn't map cleanly onto a generic framework's abstractions anyway. |
 | Tracing tool | Langfuse | Purpose-built, free tier, professional-standard tool (using it is normal practice, not "not really building it yourself" — same category as using pytest or Grafana). |
 | Accuracy target | 90%, both clause-level and document-level | Practical bar; 100% on a small/derived eval set risks overfitting prompts to the eval set rather than generalizing. |
-| Ground truth set size | Two-stage: 20-doc dev set (fast iteration) + full CUAD-NDA set (final validation, run once dev set passes) | More data is better once reading-time is no longer the bottleneck, but a full-size set re-run after every single prompt tweak would be too slow — splitting into a fast dev loop plus a broader final check gets both speed and coverage. |
+| Ground truth set size | Two-stage: 20-doc dev set (fast iteration) + 7-doc full-validation set (all remaining CUAD Distributor Agreements, run once dev set passes) | More data is better once reading-time is no longer the bottleneck, but a full-size set re-run after every single prompt tweak would be too slow — splitting into a fast dev loop plus a broader final check gets both speed and coverage. 7 is thinner than originally hoped (a consequence of the domain pivot — CUAD has 27 clean Distributor Agreements total, not "dozens to hundreds"), but still a genuine held-out check. |
 
 ---
 
 ## Ground-Truth Labelling Protocol
 
-1. **Pull CUAD, filter to NDA-type contracts.** Confirm the real count (this plan assumed a "dozens, not hundreds" range without verifying the exact number — verify in Phase 0).
-2. **Build two answer keys mechanically, at the same time.** CUAD's labels already exist in machine-readable form; Claude Code formats them into structured per-document answer-key files (clause type → present/absent, location, quoted span) for the chosen checklist categories — one covering a **20-document dev subset**, one covering **all remaining NDA-type contracts** (the full-validation set). Both are built together since it's pure data reformatting either way, not judgment — safe to automate, no reason to delay building the larger one.
+1. **Pull CUAD, filter to Distributor Agreement contracts.** Done: 31 of 510 CUAD contracts match by title/document-name (CUAD has no separate type field, so type is inferred from the lawyer-labeled "Document Name" answer and filename); 4 are amendment/addendum-only riders, not standalone contracts, so the working corpus is **27**. Confirmed by direct count, not assumed — the original NDA assumption was checked in Phase 0 and found to be wrong (CUAD has zero true NDAs among its 25 documented types); see Context and DECISIONS.md. The rider check itself needed two passes — title-only filtering missed 2 of the 4 riders (see DECISIONS.md, "Corpus Cleaning").
+2. **Build two answer keys mechanically, at the same time.** CUAD's labels already exist in machine-readable form; Claude (not OpenCode — this is the ground truth everything downstream is graded against) formats them into structured per-document answer-key files (clause type → present/absent, location, quoted span) for the chosen 8-category checklist — one covering a **20-document dev subset**, one covering the **remaining 7 Distributor Agreement contracts** (the full-validation set). Both are built together since it's pure data reformatting either way, not judgment — safe to automate, no reason to delay building the larger one.
 3. **Spot-check, don't blindly trust.** Personally read 3-5+ of the assembled dev-set answer-key entries against the actual source documents — pick a mix (at least one clause-rich document, at least one with several absent clauses) rather than 3 similar-looking ones. The goal isn't auditing CUAD's legal correctness (trust the lawyers) — it's personally understanding *why* each label is what it is, so any of it can be explained live under interviewer questioning.
 4. **Document the trust boundary explicitly.** In DECISIONS.md, record exactly which documents were spot-checked and state plainly that the remaining labels (across both the dev set and the full-validation set) are trusted as-is from CUAD's published, expert-verified dataset (cite CUAD's own reported label-quality/inter-annotator-agreement stats as the justification for not re-verifying every row — this is standard practice when using a trusted external benchmark, not a shortcut).
-5. **Derive reference clause text** for the Matches/Deviates-standard check from the same CUAD NDA subset — the most common phrasing pattern per clause category.
+5. **Derive reference clause text** for the Matches/Deviates-standard check from the same CUAD Distributor Agreement subset — the most common phrasing pattern per clause category.
 6. **Use the two sets differently going forward:** the 20-doc dev set is the one re-run constantly (Phases 1-4, after every prompt tweak); the full-validation set is run once, near the end of Phase 4, after the dev set is passing near target — a broader check against documents never individually debugged against.
 
 ---
@@ -117,7 +119,7 @@ Steps [1] and [2] are the only steps that call an external LLM/API and therefore
 - **Clause-level accuracy** = % of (document × clause-type) pairs where the pipeline's Present/Absent call matches the ground-truth answer key. Fine-grained, shows precision on the core extraction task.
 - **Document-level accuracy** = % of documents where the full per-document checklist result matches the ground truth (exact-match definition to be finalized in Phase 4 — e.g. all clause calls correct vs. some tolerance).
 - Both are computed automatically by the **regression suite**: a pytest-based script that runs a ground-truth document set through the live pipeline and diffs the output against the answer key, on demand.
-- **Two-stage suite, matching the two-stage ground truth**: the **dev suite** (20 docs) is run after every prompt/logic change during Phases 1-4 — fast enough (target: a couple minutes) to re-run constantly. The **full-validation suite** (all remaining CUAD NDAs) is run once the dev suite is passing near the 90% target, as a broader final check — this doubles as the held-out-style generalization check (see risk below), since those documents were never individually debugged against.
+- **Two-stage suite, matching the two-stage ground truth**: the **dev suite** (20 docs) is run after every prompt/logic change during Phases 1-4 — fast enough (target: a couple minutes) to re-run constantly. The **full-validation suite** (remaining 7 CUAD Distributor Agreements) is run once the dev suite is passing near the 90% target, as a broader final check — this doubles as the held-out-style generalization check (see risk below), since those documents were never individually debugged against.
 - **Regression suite purpose**: catch silent breakage. Every time a prompt or extraction logic changes, re-run the dev suite — if a document that used to pass now fails, that's caught in minutes, not discovered weeks later. This is the core "instrumentation" deliverable the whole project is built to demonstrate.
 - **Token/latency/fallback metadata** per run is captured via Langfuse spans — not a pass/fail metric, but the evidence trail for cost and reliability claims made about the system.
 - **Overfitting risk, addressed by the two-stage design**: repeatedly tuning prompts against the same fixed 20-doc dev set risks a reported accuracy number that doesn't generalize. The full-validation set run acts as the check on this — if dev-set accuracy is 90%+ but full-validation accuracy is much lower, that's a real signal of overfitting to the dev set, worth investigating before calling v1 done.
@@ -129,7 +131,7 @@ Steps [1] and [2] are the only steps that call an external LLM/API and therefore
 Matches the collaboration model already agreed: each phase gets built, reviewed, and understood before the next one starts — no phase begins until the previous one's design decisions can be explained back, not just observed working.
 
 **Phase 0 — Setup & Ground-Truth Foundation**
-Pull CUAD → filter NDAs → build both answer keys mechanically (20-doc dev set + full-validation set) → spot-check 3-5+ dev-set docs → derive reference clause text per category → finalize the 6-8-category checklist against what's actually well-represented in the data.
+Pull CUAD → confirm domain viability (done: NDA not viable, pivoted to Distributor Agreement, 27 clean docs after excluding 4 amendment/addendum riders) → build both answer keys mechanically (20-doc dev set + 7-doc full-validation set) → spot-check 3-5+ dev-set docs → derive reference clause text per category → finalize the 8-category checklist against measured data (done: swapped No-Solicit-of-Employees/IP-Ownership-Assignment for Exclusivity/License-Grant).
 *Deliverable:* two answer-key files (dev + full-validation) + reference-clause file + confirmed checklist.
 
 **Phase 1 — Core Pipeline (happy path only)**
@@ -176,9 +178,9 @@ LangGraph migration (as its own reviewed mini-project, not a rushed bolt-on) →
 Format per entry: **Decision** → **Reasoning** → **Alternatives considered / rejected** → **What I'd change if I did it again**
 
 ## Domain & Scope
-- Decision: NDA-only, CUAD-sourced, presence + deviation-detection (no severity scoring).
-- Reasoning: [in your own words — bounded ground truth, no legal background to defend risk judgments]
-- Rejected: general multi-tool agent (no coherent ground truth possible across unrelated tasks); data-cleaning automation agent (heavier ground-truth burden than a decision-memo project, and drops the "document" framing entirely); weighted/graded legal-risk scoring (needs legal expertise not held).
+- Decision: Distributor-Agreement-only (pivoted from originally-planned NDA), CUAD-sourced, presence + deviation-detection (no severity scoring).
+- Reasoning: [in your own words — bounded ground truth, no legal background to defend risk judgments; why the pivot happened — CUAD verified to have zero true NDAs among its 25 documented contract types, found in Phase 0 by direct keyword/label search across all 510 docs, not assumed]
+- Rejected: NDA (verified non-viable — not a CUAD type); License Agreement as the pivot target (36 docs, more than Distributor's 31, but weaker measured coverage on the checklist: IP Ownership Assignment was the only category it beat Distributor on, 29% vs 10%, while Distributor won on Non-Compete 42% vs 20%, Termination-for-Convenience 42% vs 34%, Cap-on-Liability 68% vs 59%, Anti-Assignment 81% vs 76%); general multi-tool agent (no coherent ground truth possible across unrelated tasks); data-cleaning automation agent (heavier ground-truth burden than a decision-memo project, and drops the "document" framing entirely); weighted/graded legal-risk scoring (needs legal expertise not held).
 
 ## Failure Handling
 - Decision: 4 distinct retry/fallback rules by failure type; 3-tier fallback chain (Gemini → Groq → rule-based).
