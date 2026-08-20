@@ -3,10 +3,11 @@ Groq-specific raw generation call -- AI fallback tier (different provider
 from Gemini, so a Gemini-side outage/quota issue doesn't take down both
 tiers at once -- see PLAN.md "Fallback chain" reasoning).
 
-Model name is env-overridable (GROQ_MODEL) rather than hardcoded with
-confidence -- verify the default against `client.models.list()` once a
-real API key is available; Groq's hosted model lineup changes over time
-and this was picked from training knowledge, not a live check.
+Model name is env-overridable (GROQ_MODEL). Verified against a live
+`client.models.list()` call once the API key was available -- the first
+guess (llama-3.3-70b-versatile, from training knowledge) turned out to be
+stale and isn't in Groq's current lineup at all. Picked openai/gpt-oss-120b
+instead: large, general-purpose, actually present in the live model list.
 """
 import os
 
@@ -14,7 +15,7 @@ import groq
 
 from .clause_extraction import build_prompt
 
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 
 def make_generate_fn(doc_text: str, client: groq.Groq):
