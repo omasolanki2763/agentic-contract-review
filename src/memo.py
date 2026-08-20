@@ -33,6 +33,12 @@ def assemble_memo(doc_title: str, compared_result: dict) -> dict:
 
 def format_memo_markdown(memo: dict) -> str:
     lines = [f"# Clause Review: {memo['document']}", "", f"**{memo['summary']}**", ""]
+    if memo.get("fallback_used"):
+        lines.append(
+            f"**⚠ fallback used** -- tier: `{memo['fallback_tier']}`, "
+            f"retries spent: {memo['retries_used']}"
+        )
+        lines.append("")
     for c in memo["clauses"]:
         status = "PRESENT" if c["present"] else "ABSENT"
         lines.append(f"## {c['category']} -- {status}")
