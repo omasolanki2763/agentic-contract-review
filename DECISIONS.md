@@ -50,5 +50,11 @@ Format per entry: **Decision** → **Reasoning** → **Alternatives considered /
 - Verification bonus: the full Zenodo release organizes contracts into CUAD's own official type folders (`full_contract_pdf/Part_I|II|III/Distributor/...`). Cross-checked all 31 title-matched docs against this official folder structure -- all 31 are independently confirmed as CUAD's own "Distributor" type (just split across three Part_ folders, not one), corroborating the domain-pivot and corpus-selection decisions above from a second, independent source rather than just the title-substring heuristic.
 - Impact: 27 clean-corpus PDFs copied to `data/pdfs/` with a `manifest.json` mapping CUAD title -> PDF filename, for Phase 1 to consume directly.
 
+## Phase 1 — Happy-Path Validation
+- Decision: proved the pipeline shape on 3 sample docs (SmartRx 3/8 richness, Etelos 6/8, Zogenix 8/8 — same docs already spot-checked in Phase 0, so results are directly comparable to hand-verified ground truth).
+- Result: 23/24 clause-level calls correct (95.8%) on this tiny sample. Etelos and Zogenix: exact match, 8/8 and 6/8 respectively. SmartRx: 7/8 -- one false positive, Cap On Liability called PRESENT when ground truth (and my own Phase 0 spot-check reading) says ABSENT. Gemini quoted real, grounded text from the contract's "LIMITATION OF LIABILITY" section header, but that section is actually just warranty disclaimers -- the real cap subsection is literally "9.6 INTENTIONALLY LEFT BLANK" in the source. The model conflated "warranty disclaimer" with "liability cap." No hallucinated/ungrounded quotes on any of the 3 docs -- the grounding check never had to reject anything.
+- Reasoning: 3 docs is nowhere near enough to claim an accuracy number (that's Phase 4's job, over the full 20-doc dev set) -- this only proves the pipeline's shape works end to end and gives one concrete, already-understood failure mode to watch for when prompt-tuning later.
+- What I'd change if I did it again: nothing yet -- too early, this is exactly the kind of miss Phase 4's regression suite and prompt iteration is supposed to catch and fix.
+
 ## What I Tried That Failed
 - [Fill in during build — e.g. "tried X threshold for grounding check, broke on Y case because Z, switched to..."]
