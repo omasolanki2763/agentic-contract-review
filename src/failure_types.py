@@ -21,6 +21,7 @@ retry policy treats as non-retryable -- escalate to fallback rather than
 risk retrying something that will never succeed.
 """
 import json
+import re
 from enum import Enum
 
 
@@ -34,19 +35,32 @@ class FailureType(Enum):
 
 _DAILY_QUOTA_MARKERS = ("per day", "daily", "perday", "requests per day")
 _TRANSIENT_MARKERS = ("timeout", "timed out", "deadline exceeded", "connection",
-                       "unavailable", "rate limit", "429", "resource_exhausted")
+                       "unavailable", "rate limit", "resource_exhausted",
+                       # 5xx server errors are the textbook transient case
+                       # (server-side, retrying later often succeeds) but
+                       # don't all contain "unavailable" -- caught during
+                       # code review, not yet observed live. Bare status
+                       # codes are matched separately via _STATUS_CODE_RE.
+                       "internal error", "overloaded", "try again")
+
+
+_STATUS_CODE_RE = re.compile(r"\b(429|500|502|503|504)\b")
 
 
 def classify_api_error(exc: Exception) -> FailureType:
     msg = str(exc).lower()
     status = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+    # Word-boundary match for bare status-code digits -- a plain "429" in
+    # msg would also fire on a request id or token count that happens to
+    # contain those digits.
+    code_match = _STATUS_CODE_RE.search(msg)
 
-    if status == 429 or "429" in msg or "resource_exhausted" in msg:
+    if status == 429 or (code_match and code_match.group(1) == "429") or "resource_exhausted" in msg:
         if any(marker in msg for marker in _DAILY_QUOTA_MARKERS):
             return FailureType.QUOTA_EXHAUSTED
         return FailureType.TRANSIENT
 
-    if any(marker in msg for marker in _TRANSIENT_MARKERS):
+    if code_match or any(marker in msg for marker in _TRANSIENT_MARKERS):
         return FailureType.TRANSIENT
 
     if isinstance(exc, (json.JSONDecodeError, ValueError, KeyError)):

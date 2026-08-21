@@ -54,7 +54,10 @@ NEGATION_GUARDED_CATEGORIES = {"Exclusivity"}
 
 
 def _is_negated(text: str, match_start: int) -> bool:
-    before = text[max(0, match_start - 40):match_start]
+    # Slice wide enough to reliably contain NEGATION_WINDOW words (avg
+    # English word ~5 chars + space ~= 6/word; 40 chars was only ~6-7
+    # words, silently capping the window below its stated value of 8).
+    before = text[max(0, match_start - NEGATION_WINDOW * 8):match_start]
     words = re.findall(r"[a-z']+", before.lower())
     return any(w in NEGATIONS for w in words[-NEGATION_WINDOW:])
 

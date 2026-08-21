@@ -27,6 +27,15 @@ def make_generate_fn(doc_text: str, client: groq.Groq):
             model=model,
             messages=[{"role": "user", "content": prompt + extra_instruction}],
         )
-        return response.choices[0].message.content
+        if not response.choices:
+            raise ValueError("empty choices list from Groq")
+        text = response.choices[0].message.content
+        if not text:
+            # Same empty-response case as gemini_provider -- not a network
+            # failure, classify as MALFORMED_OUTPUT for the corrective retry.
+            raise ValueError(
+                f"empty response from Groq (finish_reason={response.choices[0].finish_reason})"
+            )
+        return text
 
     return generate

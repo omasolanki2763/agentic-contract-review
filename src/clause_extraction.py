@@ -71,17 +71,33 @@ def _normalize(text: str) -> str:
 def ground_quotes(doc_text: str, raw_result: dict) -> dict:
     """For every category/quote in raw_result, verify the quote actually
     exists in doc_text. Returns the same shape with each quote replaced by
-    a dict: {text, grounded, score, location}."""
+    a dict: {text, grounded, score, location}.
+
+    raw_result is LLM-produced JSON -- shape is a claim, not a guarantee.
+    Raises ValueError (classified MALFORMED_OUTPUT by the retry policy,
+    same as a parse_json_response failure) on anything that doesn't match
+    the documented shape, rather than letting an AttributeError/TypeError
+    escape and crash the whole fallback chain.
+    """
+    if not isinstance(raw_result, dict):
+        raise ValueError(f"expected a JSON object, got {type(raw_result).__name__}")
+
     doc_norm = _normalize(doc_text)
     grounded_result = {}
 
     for cat in CHECKLIST:
         entry = raw_result.get(cat, {"present": False, "quotes": []})
+        if not isinstance(entry, dict):
+            raise ValueError(f"expected an object for {cat!r}, got {type(entry).__name__}")
         present = bool(entry.get("present"))
         quotes = entry.get("quotes", []) or []
+        if not isinstance(quotes, list):
+            raise ValueError(f"expected a list of quotes for {cat!r}, got {type(quotes).__name__}")
 
         grounded_quotes = []
         for q in quotes:
+            if not isinstance(q, str):
+                raise ValueError(f"expected a string quote for {cat!r}, got {type(q).__name__}")
             q_norm = _normalize(q)
             idx = doc_norm.find(q_norm)
             if idx != -1:
