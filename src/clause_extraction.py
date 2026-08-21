@@ -1,8 +1,12 @@
 """
-Step 2: Clause extraction (LLM: Gemini primary) + grounding check.
+Step 2: Clause extraction (LLM) + grounding check.
 
-Phase 1 = happy path only -- one Gemini call, no retry, no fallback tier
-(Groq / rule-based fallback is Phase 2, see PLAN.md "Failure handling").
+Prompt-building, JSON parsing, and the grounding check are shared across
+both LLM tiers (Gemini primary, Groq fallback -- see PLAN.md "Failure
+handling / fallback chain") since both tiers need to answer the exact same
+question in the exact same output shape; only the actual API call differs
+per provider. Provider-specific "generate raw text" functions live in
+gemini_provider.py / groq_provider.py.
 
 Grounding check: every quote the LLM returns is verified to actually exist
 in the extracted document text (fuzzy match, tolerant of whitespace/
@@ -13,12 +17,10 @@ hallucination.
 import json
 import re
 
-from google import genai
 from rapidfuzz import fuzz
 
 from .clause_definitions import CHECKLIST, DEFINITIONS
 
-MODEL = "gemini-2.5-flash"
 GROUNDING_THRESHOLD = 85  # rapidfuzz partial_ratio score, 0-100
 
 
@@ -53,19 +55,13 @@ Contract text:
 """
 
 
-def _parse_json_response(raw: str) -> dict:
+def parse_json_response(raw: str) -> dict:
     raw = raw.strip()
-    # Gemini sometimes wraps JSON in a markdown code fence despite instructions.
+    # Models sometimes wrap JSON in a markdown code fence despite instructions.
     m = re.search(r"```(?:json)?\s*(\{.*\})\s*```", raw, re.DOTALL)
     if m:
         raw = m.group(1)
     return json.loads(raw)
-
-
-def call_gemini(doc_text: str, client: genai.Client) -> dict:
-    prompt = build_prompt(doc_text)
-    response = client.models.generate_content(model=MODEL, contents=prompt)
-    return _parse_json_response(response.text)
 
 
 def _normalize(text: str) -> str:
@@ -75,17 +71,33 @@ def _normalize(text: str) -> str:
 def ground_quotes(doc_text: str, raw_result: dict) -> dict:
     """For every category/quote in raw_result, verify the quote actually
     exists in doc_text. Returns the same shape with each quote replaced by
-    a dict: {text, grounded, score, location}."""
+    a dict: {text, grounded, score, location}.
+
+    raw_result is LLM-produced JSON -- shape is a claim, not a guarantee.
+    Raises ValueError (classified MALFORMED_OUTPUT by the retry policy,
+    same as a parse_json_response failure) on anything that doesn't match
+    the documented shape, rather than letting an AttributeError/TypeError
+    escape and crash the whole fallback chain.
+    """
+    if not isinstance(raw_result, dict):
+        raise ValueError(f"expected a JSON object, got {type(raw_result).__name__}")
+
     doc_norm = _normalize(doc_text)
     grounded_result = {}
 
     for cat in CHECKLIST:
         entry = raw_result.get(cat, {"present": False, "quotes": []})
+        if not isinstance(entry, dict):
+            raise ValueError(f"expected an object for {cat!r}, got {type(entry).__name__}")
         present = bool(entry.get("present"))
         quotes = entry.get("quotes", []) or []
+        if not isinstance(quotes, list):
+            raise ValueError(f"expected a list of quotes for {cat!r}, got {type(quotes).__name__}")
 
         grounded_quotes = []
         for q in quotes:
+            if not isinstance(q, str):
+                raise ValueError(f"expected a string quote for {cat!r}, got {type(q).__name__}")
             q_norm = _normalize(q)
             idx = doc_norm.find(q_norm)
             if idx != -1:
@@ -116,8 +128,3 @@ def ground_quotes(doc_text: str, raw_result: dict) -> dict:
         }
 
     return grounded_result
-
-
-def extract_clauses(doc_text: str, client: genai.Client) -> dict:
-    raw = call_gemini(doc_text, client)
-    return ground_quotes(doc_text, raw)
